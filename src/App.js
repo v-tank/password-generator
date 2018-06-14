@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Jumbotron from "./components/Jumbotron";
+import Form from "./components/Form";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.handleData = this.handleData.bind(this);
+    this.state = {
+      fromChild: ''
+    };
+  }
+
+  handleData(data) {
+    console.log(data);
+    this.setState({
+      fromChild: data
+    });
+  }
+
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Jumbotron />
+        <Form handler={this.handleData}/>
+        
       </div>
     );
   }
